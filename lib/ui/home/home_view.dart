@@ -13,27 +13,21 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('mikutter'),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        child: Image.asset('assets/etc.png'),
-        onPressed: () {},
-      ),
-      body: faqs.length == 0
-          ? Container()
-          : ListView.builder(
-              itemBuilder: (context, index) => ListTile(
-                title: Text(faqs[index].question),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailView(
-                      faq: faqs[index],
-                    ),
-                  ),
-                ),
+      floatingActionButton: Image.asset('assets/etc.png'),
+      body: ListView.builder(
+        itemCount: faqs.length,
+        itemBuilder: (context, index) => ListTile(
+          title: Text(faqs[index].question),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailView(
+                faq: faqs[index],
               ),
             ),
+          ),
+        ),
+      ),
     );
   }
 }
